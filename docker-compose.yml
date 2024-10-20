@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin       # Senha do usuário root
+      MYSQL_DATABASE: my_tasks        # Nome do banco de dados a ser criado
+      MYSQL_USER: user                    # Nome do usuário adicional
+      MYSQL_PASSWORD: user       # Senha do usuário adicional
+    ports:
+      - "3306:3306"                       # Mapeia a porta do MySQL para o host
+    volumes:
+      - db_data:/var/lib/mysql            # Persiste os dados do banco de dados
+
+volumes:
+  db_data:
